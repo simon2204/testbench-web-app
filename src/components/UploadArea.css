@@ -1,0 +1,30 @@
+.upload-area {
+    border: 1px dashed #888;
+    padding: 10px;
+    overflow: auto;
+}
+
+.upload-area .heading {
+    text-align: center;
+    color: #888;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.upload-area .selected-files {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.upload-area .selected-files .file {
+    margin: 7px;
+}
+
+.upload-area .empty-files {
+    width: 150px;
+    filter: opacity(20%);
+    padding-bottom: 20px;
+}

@@ -1,0 +1,51 @@
+.submission-form {
+    background-color: #fcfcfc;
+    margin: 15px;
+    padding: 15px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+    display: grid;
+    
+    grid-template-areas: 
+    "label select . ."
+    "upload upload upload upload"
+    ". . . submit";
+    grid-template-columns: min-content min-content auto min-content;
+    grid-template-rows: min-content auto min-content;
+}
+
+.submission-form label {
+    grid-area: label;
+    margin: 10px;
+}
+
+.submission-form button {
+    margin: 10px;
+    grid-area: submit;
+}
+
+.submission-form select {
+    grid-area: select;
+    margin: 10px;
+}
+
+.submission-form .upload-area {
+    min-height: 200px;
+    grid-area: upload;
+}
+
+.upload-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fcfcfc;
+    margin: 15px;
+    padding: 15px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.upload-info h2 {
+    font-weight: normal;
+    margin-bottom: 15px;
+}

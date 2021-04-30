@@ -1,0 +1,56 @@
+.upload-file {
+    width: 125px;
+    background-color: rgb(243, 243, 243);
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    position: relative;
+    animation: fadeIn .4s;
+    grid-template-columns: auto auto 20px;
+    grid-template-areas: 
+    "img img delete"
+    "img img ."
+    "file-name file-name file-name";
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        top: -20px;
+    }
+    100% {
+        top: 0px;
+        opacity: 1;
+    }
+}
+
+.upload-file .icon {
+    grid-area: img;
+}
+
+.upload-file .icon img {
+    filter: opacity(50%);
+}
+
+.upload-file .remove {
+    width: 20px;
+    grid-area: delete;
+    cursor: pointer;
+}
+
+.upload-file label {
+    font-size: 14px;
+    grid-area: file-name;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+}
+
+@media(max-width: 900px) {
+    .upload-file {
+        width: 125px;
+        margin: 4px;
+        padding: 4px;
+    }
+}
