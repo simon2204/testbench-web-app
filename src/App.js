@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import "antd/dist/antd.css";
 import './App.css';
 import FileUpload from "./components/FileUpload/FileUpload";
 
@@ -12,6 +13,7 @@ import TestResult from "./components/TestResult/TestResult";
 
 function App() {
     const [files, setFiles] = useState([]);
+    const [entries, setEntries] = useState([]);
 
     return (
         <Router>
@@ -31,10 +33,14 @@ function App() {
             renders the first one that matches the current URL. */}
                 <Switch>
                     <Route path="/test-result">
-                        <TestResult files={files}/>
+                        <TestResult files={files} entries={entries}/>
                     </Route>
                     <Route path="/">
-                        <FileUpload files={files} setFiles={setFiles}/>
+                        <FileUpload
+                            files={files}
+                            setFiles={setFiles}
+                            setEntries={setEntries}
+                        />
                     </Route>
                 </Switch>
             </div>

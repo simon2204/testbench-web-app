@@ -6,17 +6,12 @@ import axios from 'axios'
 // import { saveAs } from 'file-saver'
 import loading from './loading.svg'
 
-let entries = { entries:
-    [{task: {id: Number, name: String, points: Number}, successful: Boolean}]
-}
-
 const SubmissionForm = (props) => {
     const [allTests, setAllTests] = useState([])
     const [test, setTest] = useState('')
     const files = props.files
     const setFiles = props.setFiles
     const [statusText, setStatusText] = useState('')
-    const [result, setResult] = useState(entries)
 
     // load the available tests
     useEffect(() => {
@@ -55,7 +50,7 @@ const SubmissionForm = (props) => {
         }).then(response => {
             setStatusText('')
             if(response) {
-                setResult(response.data)
+                props.setEntries(response.data.entries)
             }
         }).catch(err => console.error(err))
         // onUploadProgress: evt => setPercentCompleted(Math.round((evt.loaded * 100) / evt.total))
