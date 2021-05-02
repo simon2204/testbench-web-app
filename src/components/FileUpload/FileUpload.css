@@ -1,0 +1,33 @@
+.file-upload {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: auto 850px auto;
+    grid-template-rows: min-content auto min-content;
+    grid-template-areas:
+    "nav nav nav"
+    ". form ."
+    "footer footer footer";
+}
+
+@media(max-width: 900px) {
+    .file-upload {
+        grid-template-columns: 0 auto 0;
+    }
+}
+
+.navbar {
+    grid-area: nav;
+}
+
+.submission-form {
+    grid-area: form;
+    overflow: auto;
+}
+
+.upload-info {
+    grid-area: form;
+}
+
+.footer {
+    grid-area: footer;
+}

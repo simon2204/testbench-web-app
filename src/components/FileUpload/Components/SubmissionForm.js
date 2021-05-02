@@ -3,14 +3,20 @@ import React, { useEffect, useState } from 'react'
 import './SubmissionForm.css'
 import UploadArea from './UploadArea'
 import axios from 'axios'
-import { saveAs } from 'file-saver'
+// import { saveAs } from 'file-saver'
 import loading from './loading.svg'
+
+let entries = { entries:
+    [{task: {id: Number, name: String, points: Number}, successful: Boolean}]
+}
 
 const SubmissionForm = (props) => {
     const [allTests, setAllTests] = useState([])
-    const [files, setFiles] = useState([])
     const [test, setTest] = useState('')
+    const files = props.files
+    const setFiles = props.setFiles
     const [statusText, setStatusText] = useState('')
+    const [result, setResult] = useState(entries)
 
     // load the available tests
     useEffect(() => {
@@ -36,14 +42,11 @@ const SubmissionForm = (props) => {
         const formData = new FormData()
         formData.append('testName', test)
         files.forEach(file => formData.append('files[]', file))
-
-
-
         axios({
             method: 'POST',
             url: 'http://localhost:8080/api/upload',
             data: formData,
-            responseType: "blob",
+            responseType: "json",
             headers: {
                 "Content-Type": "multipart/form-data",
             },
@@ -51,8 +54,8 @@ const SubmissionForm = (props) => {
             onDownloadProgress: evt => setStatusText('Feedback wird Heruntergeladen...')
         }).then(response => {
             setStatusText('')
-            if(response.data) {
-                saveAs(response.data, 'Auswertung.txt')
+            if(response) {
+                setResult(response.data)
             }
         }).catch(err => console.error(err))
         // onUploadProgress: evt => setPercentCompleted(Math.round((evt.loaded * 100) / evt.total))
