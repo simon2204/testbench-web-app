@@ -9,11 +9,6 @@ const columns = [
         sorter: (a, b) => a.testcase < b.testcase,
     },
     {
-        title: 'Beschreibung',
-        dataIndex: 'description',
-        key: 'description',
-    },
-    {
         title: 'Status',
         key: 'status',
         dataIndex: 'status',
@@ -37,10 +32,9 @@ function entriesToData(result) {
 
     result.entries.map(function (entry) {
         const dataEntry = {
-            key: entry.task.id,
-            testcase: entry.task.name,
-            description: 'No description',
-            status: entry.successful ? 'success' : 'failed',
+            key: entry.id,
+            testcase: entry.info,
+            status: entry.error === "" ? 'success' : 'failed',
         }
 
         return data.push(dataEntry);

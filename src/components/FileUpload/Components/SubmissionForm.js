@@ -8,7 +8,7 @@ import loading from './loading.svg'
 
 const SubmissionForm = (props) => {
     const [allTests, setAllTests] = useState([])
-    const [test, setTest] = useState('')
+    const [test, setTest] = useState(0)
     const files = props.files
     const setFiles = props.setFiles
     const [statusText, setStatusText] = useState('')
@@ -35,7 +35,7 @@ const SubmissionForm = (props) => {
 
     const onSubmit = () => {
         const formData = new FormData()
-        formData.append('testName', test)
+        formData.append('assignmentId', `${test}`)
         files.forEach(file => formData.append('files[]', file))
         axios({
             method: 'POST',
@@ -62,12 +62,12 @@ const SubmissionForm = (props) => {
                 <label>Praktikumsaufgabe: </label>
                 <select value={test} onChange={onTestChange}>
                     <option/>
-                    { allTests.map(test => <option key={test} value={test}>{test}</option>) }
+                    { allTests.map(test => <option key={test.id} value={test.id}>{test.name}</option>) }
                 </select>
-                <UploadArea 
+                <UploadArea
                     files={files}
                     setFiles={setFiles}
-                    disabled={test === ''}
+                    disabled={test === 0}
                     disabledMsg="Bitte wählen Sie zuerst eine Praktikumsaufgabe aus."/>
                 <button onClick={onSubmit}>Testen</button>
             </div>

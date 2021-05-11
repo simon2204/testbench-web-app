@@ -8,10 +8,12 @@ function FileUpload(props) {
     return (
         <div className="file-upload">
             <Navbar />
-            <SubmissionForm files={props.files}
-                            setFiles={props.setFiles}
-                            setEntries={props.setEntries}
-                            entries={props.entries}/>/>
+            <SubmissionForm
+                files={props.files}
+                setFiles={props.setFiles}
+                setEntries={props.setEntries}
+                entries={props.entries}
+            />
             <Footer />
         </div>
     )

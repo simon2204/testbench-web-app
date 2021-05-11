@@ -5,7 +5,7 @@ import './Navbar.css'
 function Navbar(props) {
     return (
         <nav className="navbar">
-            <h3 className="title">Prozedurale Programmierung</h3>
+            <div className="title">Testbench - Prozedurale Programmierung</div>
         </nav>
     )
 }

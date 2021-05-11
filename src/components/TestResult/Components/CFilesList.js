@@ -7,12 +7,15 @@ const { Panel } = Collapse;
 function CFilesList({files}) {
     const [code, setCode] = useState([])
 
+
     useEffect(() => {
-        const reader = new FileReader()
-        reader.onabort = () => console.log('File reading was aborted')
-        reader.onerror = () => console.log('File reading has failed')
-        reader.onload = () =>  setCode(codes => [...codes, reader.result])
         files.forEach(function (file) {
+            const reader = new FileReader()
+
+            reader.onabort = () => console.log('File reading was aborted')
+            reader.onerror = () => console.log('File reading has failed')
+            reader.onload = () =>  setCode(codes => [...codes, reader.result])
+
             reader.readAsText(file)
         })
     }, [files]);
